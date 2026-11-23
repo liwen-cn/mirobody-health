@@ -1,0 +1,98 @@
+rules:
+  - id: lipid_metabolism
+    category: "心血管与血脂代谢"
+    name: "血脂调理与代谢疏通"
+    trigger_conditions:
+      - indicator: "甘油三酯"
+        condition: "> 1.7"
+      - indicator: "总胆固醇"
+        condition: "> 5.2"
+      - indicator: "低密度脂蛋白胆固醇"
+        condition: "> 3.4"
+    plain_analysis: "血脂代谢周转偏慢，血液粘稠度潜在偏高。医院体检常见此类轻度或临界偏高，西医一般未达开药标准，但属于生活方式和膳食调理的最佳黄金干预窗口。"
+    red_light_avoid:
+      - title: "禁盲目大补与高滋腻膏滋"
+        reason: "避免阿胶、鹿茸、浓缩熟地等过于滋腻之品，脾胃运化不及易助湿生痰生热。"
+      - title: "忌浓肉汤、动物内脏与油炸重油"
+        reason: "老火靓汤、猪肝腰花、油炸外卖会加重肝脏脂质代谢负担。"
+    green_light_recommend:
+      - title: "山楂荷叶决明饮"
+        ingredients: ["山楂", "荷叶", "决明子"]
+        effect: "化浊降脂、疏通血管、消食行气，适合日常代茶饮温服。"
+      - title: "陈皮茯苓葛根茶"
+        ingredients: ["新会陈皮", "茯苓", "葛根"]
+        effect: "健脾燥湿、生津舒筋，辅助改善餐后困倦与湿滞。"
+    tonic_guide: "如需滋补，建议优先选择轻补清补品类（如西洋参、石斛轻饮），慎用厚重动物胶类补品。"
+    recheck_plan: "调理 60~90 天后复查空腹血脂四项（三甲医院或社区卫生中心均可）。"
+
+  - id: uric_acid_metabolism
+    category: "代谢与肾脏负担"
+    name: "嘌呤代谢与清浊排酸"
+    trigger_conditions:
+      - indicator: "尿酸"
+        condition: "> 420"
+    plain_analysis: "体内嘌呤生成或肾脏排泄平衡失调，处于高尿酸警戒区间。若不加以饮食干预，易逐渐沉淀为微小尿酸盐结晶，影响关节与肾小管。"
+    red_light_avoid:
+      - title: "严禁老火海鲜汤、菌菇浓汤与啤酒"
+        reason: "超高嘌呤摄入会直接导致血尿酸瞬时飙升。"
+      - title: "控制果葡糖浆与高糖软饮"
+        reason: "果糖在肝脏磷酸化过程中大量消耗ATP，加速嘌呤合成并竞争性抑制尿酸排泄。"
+    green_light_recommend:
+      - title: "菊苣栀子利湿茶"
+        ingredients: ["菊苣", "栀子", "百合", "葛根"]
+        effect: "清热利湿、辅助排酸，临床经典降酸药食同源配方。"
+      - title: "玉米须茯苓水"
+        ingredients: ["玉米须", "茯苓"]
+        effect: "温和利尿排水，增加每日清淡饮水量促排泄。"
+    tonic_guide: "燕窝、西洋参可适量温补，严禁大量食用海马、鹿鞭、虫草浓汤等大热大荤滋补品。"
+    recheck_plan: "调理 60 天后单项复查血尿酸。"
+
+  - id: glucose_insulin_metabolism
+    category: "糖代谢与胰岛素敏感性"
+    name: "糖脂平稳与胰岛减负"
+    trigger_conditions:
+      - indicator: "空腹血糖"
+        condition: "> 5.6"
+      - indicator: "糖化血红蛋白"
+        condition: "> 5.7"
+    plain_analysis: "血糖或糖化处于正常高值或糖耐量轻度受损边缘，提示外周组织对胰岛素敏感性有所下降，餐后血糖波动可能较大。"
+    red_light_avoid:
+      - title: "忌精制高糖滋补膏方"
+        reason: "传统熬膏常用的冰糖、红糖、饴糖辅料易引起血糖剧烈波动。"
+      - title: "忌快速升糖的精制主食"
+        reason: "白粥、精白面条、糯米糕点升糖指数极高，增加胰岛素分泌压力。"
+    green_light_recommend:
+      - title: "桑叶黄精石斛茶"
+        ingredients: ["桑叶", "黄精", "铁皮石斛"]
+        effect: "生津润燥、调理气阴，有助于辅助平稳糖耐量。"
+      - title: "肉桂茯苓芡实饮"
+        ingredients: ["肉桂", "茯苓", "芡实"]
+        effect: "温阳化气、健脾益肾，帮助改善胰岛素抵抗。"
+    tonic_guide: "滋补可选纯燕窝（无糖慢炖）、冬虫夏草或西洋参，严控含糖配料与甜味添加剂。"
+    recheck_plan: "3 个月后复查空腹血糖与糖化血红蛋白（HbA1c）。"
+
+  - id: liver_enzyme_health
+    category: "肝胆代谢与解毒功能"
+    name: "疏肝利胆与细胞修护"
+    trigger_conditions:
+      - indicator: "谷丙转氨酶"
+        condition: "> 45"
+      - indicator: "谷草转氨酶"
+        condition: "> 35"
+      - indicator: "谷氨酰转肽酶"
+        condition: "> 50"
+    plain_analysis: "肝细胞存在轻度代谢负担或一过性水肿，常见于熬夜、轻度脂肪肝、压力或饮酒后。肝脏自愈能力极强，及时疏解即可迅速恢复。"
+    red_light_avoid:
+      - title: "忌过度熬夜与夜宵饮酒"
+        reason: "深夜子丑时是肝胆经血汇聚时段，熬夜加重肝细胞耗损。"
+      - title: "忌滥用成分不明的民间偏方药酒"
+        reason: "酒精与未经炮制的中草药极易导致药物性肝损伤。"
+    green_light_recommend:
+      - title: "枸杞决明菊花茶"
+        ingredients: ["决明子", "枸杞子", "胎菊"]
+        effect: "清肝明目、柔肝养阴，适合经常用眼与久坐熬夜人群。"
+      - title: "蒲公英葛根水"
+        ingredients: ["蒲公英", "葛根"]
+        effect: "清解内热、护肝解郁、加快代谢排毒。"
+    tonic_guide: "燕窝、少量高品质虫草性平温润，有益于正气恢复，避免过于燥烈的温补药酒。"
+    recheck_plan: "调理 30~60 天后复查肝功能全项。"

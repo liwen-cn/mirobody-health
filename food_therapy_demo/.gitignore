@@ -1,0 +1,10 @@
+# 隐私与密钥保护（严禁提交个人体检报告与 API Key）
+.env
+data/raw_reports/*
+!data/raw_reports/.gitkeep
+output/*
+!output/.gitkeep
+__pycache__/
+*.pyc
+.venv/
+.DS_Store

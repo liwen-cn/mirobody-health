@@ -1,0 +1,70 @@
+# ==============================================================================
+# 安全防护配置：严禁提交真实健康隐私数据、个人信息、密钥与本地日志
+# ==============================================================================
+
+# 1. 真实隐私医疗报告与体检源文件（最高级别防护）
+原始体检数据等/
+sample_reports/
+output/
+data/raw_reports/
+food_therapy_demo/data/raw_reports/
+food_therapy_demo/output/*
+!food_therapy_demo/output/.gitkeep
+
+# 任何可能包含真实检查单的二进制/多媒体文档
+*.pdf
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.jpg
+*.JPG
+*.jpeg
+*.png
+*.PNG
+*.csv
+*.xlsx
+*.xls
+
+# 屏蔽个人留档文档，仅放行经人工确认脱敏的开源 README 展示截图
+docs/*.md
+!docs/assets/
+!docs/assets/*.png
+
+# 2. 真实环境密钥与本地配置
+.env
+*.env
+!.env.example
+!food_therapy_demo/.env.example
+*.pem
+*.key
+*.cert
+
+# 3. 本地数据库与持久化数据
+*.sqlite
+*.sqlite3
+*.db
+pgdata/
+
+# 4. 运行时日志与备份
+*.log
+gateway.log
+*.bak
+*.swp
+*~
+
+# 5. 系统缓存与 Python 编译产物
+.DS_Store
+*/.DS_Store
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+ENV/
+
+# 6. 第三方克隆子仓库（解耦上游开源项目）
+mirobody/

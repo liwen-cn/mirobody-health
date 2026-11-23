@@ -1,0 +1,63 @@
+{
+  "profile": {
+    "alias": "林先生（演示样本）",
+    "gender": "男",
+    "age": 36
+  },
+  "constitution_selected": [
+    "post_meal_fatigue",
+    "bitter_mouth_heat"
+  ],
+  "reports": [
+    {
+      "report_date": "2024-10-18",
+      "source_file": "2024年度三甲医院体检报告.pdf",
+      "hospital": "某三甲医院健康管理中心",
+      "indicators": [
+        {"code": "TG", "name": "甘油三酯", "value": 1.62, "unit": "mmol/L", "ref_low": 0.4, "ref_high": 1.7, "page": "P3"},
+        {"code": "LDL-C", "name": "低密度脂蛋白胆固醇", "value": 3.15, "unit": "mmol/L", "ref_low": 0.0, "ref_high": 3.4, "page": "P3"},
+        {"code": "UA", "name": "血尿酸", "value": 398, "unit": "μmol/L", "ref_low": 208, "ref_high": 428, "page": "P3"},
+        {"code": "FBG", "name": "空腹血糖", "value": 5.35, "unit": "mmol/L", "ref_low": 3.9, "ref_high": 6.1, "page": "P3"},
+        {"code": "GGT", "name": "γ-谷氨酰转肽酶", "value": 38, "unit": "U/L", "ref_low": 10, "ref_high": 60, "page": "P2"},
+        {"code": "ALT", "name": "丙氨酸氨基转移酶", "value": 31, "unit": "U/L", "ref_low": 9, "ref_high": 50, "page": "P2"}
+      ],
+      "findings": [
+        {"section": "腹部超声", "summary": "肝实质回声略增粗，提示轻度脂肪肝倾向", "page": "P7"}
+      ]
+    },
+    {
+      "report_date": "2025-10-22",
+      "source_file": "2025年度三甲医院体检报告.pdf",
+      "hospital": "某三甲医院健康管理中心",
+      "indicators": [
+        {"code": "TG", "name": "甘油三酯", "value": 2.38, "unit": "mmol/L", "ref_low": 0.4, "ref_high": 1.7, "page": "P3"},
+        {"code": "LDL-C", "name": "低密度脂蛋白胆固醇", "value": 3.52, "unit": "mmol/L", "ref_low": 0.0, "ref_high": 3.4, "page": "P3"},
+        {"code": "UA", "name": "血尿酸", "value": 446, "unit": "μmol/L", "ref_low": 208, "ref_high": 428, "page": "P3"},
+        {"code": "FBG", "name": "空腹血糖", "value": 5.68, "unit": "mmol/L", "ref_low": 3.9, "ref_high": 6.1, "page": "P3"},
+        {"code": "GGT", "name": "γ-谷氨酰转肽酶", "value": 54, "unit": "U/L", "ref_low": 10, "ref_high": 60, "page": "P2"},
+        {"code": "ALT", "name": "丙氨酸氨基转移酶", "value": 42, "unit": "U/L", "ref_low": 9, "ref_high": 50, "page": "P2"}
+      ],
+      "findings": [
+        {"section": "腹部超声", "summary": "轻度脂肪肝", "page": "P8"},
+        {"section": "甲状腺超声", "summary": "甲状腺右叶低回声小结节（TI-RADS 3类，约3.2mm），建议年度复查", "page": "P9"}
+      ]
+    },
+    {
+      "report_date": "2026-10-15",
+      "source_file": "2026年度三甲医院体检报告.pdf",
+      "hospital": "某三甲医院健康管理中心",
+      "indicators": [
+        {"code": "TG", "name": "甘油三酯", "value": 1.88, "unit": "mmol/L", "ref_low": 0.4, "ref_high": 1.7, "page": "P4"},
+        {"code": "LDL-C", "name": "低密度脂蛋白胆固醇", "value": 3.28, "unit": "mmol/L", "ref_low": 0.0, "ref_high": 3.4, "page": "P4"},
+        {"code": "UA", "name": "血尿酸", "value": 412, "unit": "μmol/L", "ref_low": 208, "ref_high": 428, "page": "P4"},
+        {"code": "FBG", "name": "空腹血糖", "value": 5.96, "unit": "mmol/L", "ref_low": 3.9, "ref_high": 6.1, "page": "P4"},
+        {"code": "GGT", "name": "γ-谷氨酰转肽酶", "value": 46, "unit": "U/L", "ref_low": 10, "ref_high": 60, "page": "P3"},
+        {"code": "ALT", "name": "丙氨酸氨基转移酶", "value": 34, "unit": "U/L", "ref_low": 9, "ref_high": 50, "page": "P3"}
+      ],
+      "findings": [
+        {"section": "腹部超声", "summary": "轻度脂肪肝（较前略有减轻）", "page": "P8"},
+        {"section": "甲状腺超声", "summary": "甲状腺右叶小结节（TI-RADS 3类，约3.2mm，较前无明显变化）", "page": "P9"}
+      ]
+    }
+  ]
+}
