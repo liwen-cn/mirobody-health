@@ -27,6 +27,14 @@ Sitting down with a thick stack of annual checkup PDFs and loose lab slips from 
 
 **Mirobody-Health** pairs the open-source [Mirobody](https://github.com/thetahealth/mirobody) standardized health data hub with a **zero-invasive sidecar gateway**. Without forcing users to write a single prompt, it mines silent risks across years and turns them into a **mobile-readable report with plain-English takeaways and a ready-to-read checklist for your next doctor visit**.
 
+<p align="center">
+  <img src="./docs/assets/report-highlights.png" alt="Mirobody-Health synthetic demo highlights: 85% silent borderline SVG trends, Apple Watch cross-check, and food-therapy guardrails" width="100%" />
+</p>
+
+<p align="center">
+  <em>▲ Highlights generated directly from the built-in synthetic demo dataset (<code>--demo</code>): 15-second executive verdict, unflagged 85%+ borderline SVG sparklines, 962-day Apple Watch cross-check, "guardrails-first" food-therapy traffic lights, and doctor-visit questions.</em>
+</p>
+
 ---
 
 ## Five Core Highlights
@@ -103,7 +111,7 @@ Native-style **「健康报告」(Health Report)** entry injected into Mirobody'
 </p>
 
 ### 2. Mobile-First Report Output (Synthetic Demo Profile)
-Executive verdict → Silent borderline callout → Cross-system pain points with inline SVG lab trends → Protective anchors → Apple Watch multi-year cross-check → System traffic lights → Food-therapy guardrails → Doctor-visit questions → Recheck timeline:
+Core modules are showcased above; click below to expand the complete 430px mobile long-PNG covering **Executive verdict → Silent borderline callout → Cross-system pain points with inline SVG lab trends → Protective anchors → Apple Watch multi-year cross-check → System traffic lights → Food-therapy guardrails → Doctor-visit questions → Recheck timeline**:
 
 <details>
 <summary>Click to expand full 430px mobile long-PNG preview (synthetic demo dataset)</summary>
