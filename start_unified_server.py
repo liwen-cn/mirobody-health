@@ -57,8 +57,8 @@ INJECT_JS = """
     reportFrame = document.createElement('iframe');
     reportFrame.id = 'mirobody-report-view';
     reportFrame.src = '/studio/view';
-    // Use high z-index and solid opaque background so it completely covers the main content area
-    reportFrame.style.cssText = 'position:fixed; top:0; right:0; bottom:0; border:none; z-index:9999; background:#f6f4ef; opacity:1; width:calc(100vw - 272px); height:100vh; display:none; box-sizing:border-box;';
+    // Use high z-index and solid opaque background with !important so it completely covers the main content area
+    reportFrame.style.cssText = 'position:fixed !important; top:0 !important; right:0 !important; bottom:0 !important; border:none !important; z-index:99999 !important; background:#f6f4ef !important; opacity:1 !important; width:calc(100vw - 272px) !important; height:100vh !important; display:none; box-sizing:border-box !important;';
     document.body.appendChild(reportFrame);
     return reportFrame;
   }
@@ -69,16 +69,29 @@ INJECT_JS = """
     if (sidebar) {
       var w = sidebar.getBoundingClientRect().width;
       if (w > 0) {
-        reportFrame.style.width = 'calc(100vw - ' + w + 'px)';
+        reportFrame.style.setProperty('left', w + 'px', 'important');
+        reportFrame.style.setProperty('width', 'calc(100vw - ' + w + 'px)', 'important');
+        reportFrame.style.setProperty('height', '100vh', 'important');
       }
     }
+  }
+
+  function getNativeContent() {
+    return document.querySelector('[class*="_content_wrapper_"]') ||
+           document.querySelector('[class*="_chat_"] > div:last-child') ||
+           document.querySelector('main');
   }
 
   function showReportView() {
     currentViewIsReport = true;
     var frame = ensureReportFrame();
     updateFramePosition();
-    frame.style.display = 'block';
+    frame.style.setProperty('display', 'block', 'important');
+
+    var nativeContent = getNativeContent();
+    if (nativeContent) {
+      nativeContent.style.setProperty('visibility', 'hidden', 'important');
+    }
 
     var allNavs = document.querySelectorAll('button[data-tour], [class*="_nav_item_"]');
     allNavs.forEach(function(el) {
@@ -106,7 +119,11 @@ INJECT_JS = """
   function hideReportView() {
     currentViewIsReport = false;
     if (reportFrame) {
-      reportFrame.style.display = 'none';
+      reportFrame.style.setProperty('display', 'none', 'important');
+    }
+    var nativeContent = getNativeContent();
+    if (nativeContent) {
+      nativeContent.style.visibility = '';
     }
     var rBtn = document.getElementById('nav-item-report');
     if (rBtn) {
@@ -880,6 +897,17 @@ class UnifiedGatewayHandler(BaseHTTPRequestHandler):
         # Request uncompressed identity to make HTML injection direct
         headers["Accept-Encoding"] = "identity"
 
+        # Bypass 304 conditional request headers for HTML pages to ensure fresh injection
+        is_html_route = (
+            self.path == "/"
+            or self.path.startswith("/data")
+            or self.path.startswith("/indicators")
+            or self.path.startswith("/chat")
+        )
+        if is_html_route:
+            for h in ("If-None-Match", "if-none-match", "If-Modified-Since", "if-modified-since"):
+                headers.pop(h, None)
+
         try:
             conn = http.client.HTTPConnection(BACKEND_HOST, BACKEND_PORT, timeout=300)
             conn.request(method, self.path, body=body, headers=headers)
@@ -930,20 +958,29 @@ class UnifiedGatewayHandler(BaseHTTPRequestHandler):
                     pass
 
             # Inject our sidebar integration script into any HTML response
+            injected = False
             if ("text/html" in content_type or b"<div id=\"root\">" in res_body or b"<!DOCTYPE html>" in res_body):
                 if b"</body>" in res_body:
                     res_body = res_body.replace(b"</body>", INJECT_JS.encode("utf-8") + b"</body>", 1)
+                    injected = True
                 elif b"</html>" in res_body:
                     res_body = res_body.replace(b"</html>", INJECT_JS.encode("utf-8") + b"</html>", 1)
+                    injected = True
                 else:
                     res_body = res_body + INJECT_JS.encode("utf-8")
+                    injected = True
 
             self.send_response(res.status, res.reason)
             for k, v in res.getheaders():
                 k_lower = k.lower()
                 if k_lower in ("transfer-encoding", "content-length", "connection", "content-encoding"):
                     continue
+                if injected and k_lower in ("etag", "cache-control"):
+                    continue
                 self.send_header(k, v)
+
+            if injected:
+                self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
 
             self.send_header("Content-Length", str(len(res_body)))
             self.end_headers()
